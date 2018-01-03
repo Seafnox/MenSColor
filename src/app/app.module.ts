@@ -1,4 +1,3 @@
-import { MatButtonModule, MatFormFieldModule, MatGridListModule, MatInputModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,10 +12,6 @@ import { GlobalServicesModule } from './services/global-services.module';
     GlobalServicesModule,
     ComponentsModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatGridListModule,
   ],
   declarations: [
     AppComponent
