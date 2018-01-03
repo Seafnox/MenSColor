@@ -1,3 +1,7 @@
-<p>
-  rgb-hash-form works!
-</p>
+<div [formGroup]="form" *ngIf="form">
+  <mat-form-field [hideRequiredMarker]="true" floatLabel="always">
+    <span matPrefix>#</span>
+    <mat-label>RGB HEX</mat-label>
+    <input matInput formControlName="hash" tabindex="0" type="text" placeholder="A1B2C3" required  maxlength="6">
+  </mat-form-field>
+</div>

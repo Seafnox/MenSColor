@@ -1,3 +1,16 @@
-<p>
-  rgb-separated-form works!
-</p>
+<div [formGroup]="form" *ngIf="form">
+  <mat-form-field [hideRequiredMarker]="true" floatLabel="always">
+    <mat-label>Red lightness</mat-label>
+    <input matInput formControlName="red" tabindex="0" type="number" placeholder="255" min="0" max="255" required  maxlength="3">
+  </mat-form-field>
+
+  <mat-form-field [hideRequiredMarker]="true" floatLabel="always">
+    <mat-label>Green lightness</mat-label>
+    <input matInput formControlName="green" tabindex="0" type="number" placeholder="255" min="0" max="255" required  maxlength="3">
+  </mat-form-field>
+
+  <mat-form-field [hideRequiredMarker]="true" floatLabel="always">
+    <mat-label>Blue lightness</mat-label>
+    <input matInput formControlName="blue" tabindex="0" type="number" placeholder="255" min="0" max="255" required  maxlength="3">
+  </mat-form-field>
+</div>
