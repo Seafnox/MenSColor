@@ -39,10 +39,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
         const {red = 0, green = 0, blue = 0} = separatedData;
         const {red: currentRed, green: currentGreen, blue: currentBlue} = this.colorForm.value;
-        if (currentRed === red && currentGreen === green && currentBlue === blue) {
-          return;
+        if (currentRed !== red) {
+          this.colorForm.patchValue({red});
         }
-        this.colorForm.patchValue({red, green, blue});
+        if (currentGreen !== green) {
+          this.colorForm.patchValue({green});
+        }
+        if (currentBlue !== blue) {
+          this.colorForm.patchValue({blue});
+        }
       });
 
     this.colorsSubscription = Observable.combineLatest([
@@ -50,22 +55,22 @@ export class AppComponent implements OnInit, OnDestroy {
       this.colorForm.controls.green.valueChanges.startWith(this.colorForm.controls.green.value),
       this.colorForm.controls.blue.valueChanges.startWith(this.colorForm.controls.blue.value),
     ])
-      .subscribe(([red, green, blue]: [number, number, number]) => {
-        let hash: string;
+      .subscribe(([red = 0, green = 0, blue = 0]: [number, number, number]) => {
+        const oldHash = this.colorForm.controls.hash.value;
+        let separatedData: ColorSeparatedData;
 
         try {
-          hash = ColorModel.colorSeparatedDataToHashData({red, green, blue}).hash;
+          separatedData = ColorModel.colorHashDataToSeparatedData({hash: oldHash});
         } catch (err) {
           console.error(err.toString());
+          separatedData = {} as any;
         }
+        const {red: hashRed = 0, green: hashGreen = 0, blue: hashBlue = 0} = separatedData;
 
-        const currentHash = this.colorForm.controls.hash.value;
-
-        if (!hash || hash === currentHash) {
-          return;
+        if (hashRed !== red || hashGreen !== green || hashBlue !== blue) {
+          const hash = ColorModel.getHashFromRgb(red, green, blue);
+          this.colorForm.patchValue({hash});
         }
-
-        this.colorForm.patchValue({hash});
       });
   }
 

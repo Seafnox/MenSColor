@@ -10,7 +10,7 @@ export interface ColorSeparatedData {
 
 export type ColorModelData = ColorHashData | ColorSeparatedData;
 
-export class ColorModel implements ColorSeparatedData{
+export class ColorModel implements ColorSeparatedData {
   public red: number;
   public green: number;
   public blue: number;
@@ -33,12 +33,11 @@ export class ColorModel implements ColorSeparatedData{
       throw new Error(`Receive empty 'hash' field in ColorHashData.`);
     }
     const {hash} = options;
-    const preparedHash: string = hash.length === 3 ? [hash[0], hash[0], hash[1], hash[1], hash[2], hash[2]].join('') : hash;
-    const stabilizedHash: string = ColorModel.stabilizeHash(preparedHash);
+    const stabilizedHash: string = ColorModel.stabilizeHash(hash);
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(stabilizedHash);
 
     if (!result) {
-      throw new Error(`Unexpected error: parsing color hash data failed.`);
+      throw new Error(`Unexpected error: parsing color hash data failed. ${stabilizedHash}`);
     }
 
     return {
@@ -66,8 +65,11 @@ export class ColorModel implements ColorSeparatedData{
 
   public static stabilizeHash(hash: string = ''): string {
     let result: string[] = hash.split('');
-    while (result.length !== 6) {
+    while (![3, 6].includes(result.length)) {
       result = ['0', ...result];
+    }
+    if (result.length === 3) {
+      result = [result[0], result[0], result[1], result[1], result[2], result[2]];
     }
     return result.join('');
   }
@@ -77,14 +79,14 @@ export class ColorModel implements ColorSeparatedData{
   }
 
   // @throwable
-  public static componentToHex(color: number = 0): string {
-    if (typeof color !== 'number') {
-      throw new Error(`Color is not a number: ${color} (${typeof color})`);
+  public static componentToHex(targetNumber: number = 0): string {
+    if (typeof targetNumber !== 'number') {
+      throw new Error(`Color is not a number: ${targetNumber} (${typeof targetNumber})`);
     }
-    if (color < 0 || color > 255) {
-      throw new Error(`Wrong color number: ${color}. Color number must be between [0, 255]`);
+    if (targetNumber < 0 || targetNumber > 255) {
+      throw new Error(`Wrong color number: ${targetNumber}. Color number must be between [0, 255]`);
     }
-    const hex = color.toString(16);
+    const hex = targetNumber.toString(16);
     return hex.length === 1 ? `0${hex}` : hex;
   }
 

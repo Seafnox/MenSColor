@@ -1,3 +1,4 @@
+///<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -40,7 +41,11 @@ export class RgbHashFormComponent implements OnChanges, OnDestroy {
           this.form.patchValue({hash});
           return;
         }
-        // TODO 0-9ABCDEF checker
+        if (!this.isHex(hash)) {
+          hash = hash.split('').filter((char: string) => this.isHex(char)).join('');
+          this.form.patchValue({hash});
+          return;
+        }
       });
   }
 
@@ -48,5 +53,9 @@ export class RgbHashFormComponent implements OnChanges, OnDestroy {
     if (this.hashSubscription) {
       this.hashSubscription.unsubscribe();
     }
+  }
+
+  public isHex(hash: string): boolean {
+    return /(^[0-9A-F]{0,6}$)/i.test(hash);
   }
 }
