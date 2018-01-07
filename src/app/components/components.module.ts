@@ -4,10 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatPrefix } from '@angular/material';
 import { RgbHashFormComponent } from './rgb-hash-form/rgb-hash-form.component';
 import { RgbSeparatedFormComponent } from './rgb-separated-form/rgb-separated-form.component';
+import { ColorInformerComponent } from './color-informer/color-informer.component';
+import { InitialFormComponent } from './initial-form/initial-form.component';
 
 const DECLARATION_LIST = [
   RgbHashFormComponent,
   RgbSeparatedFormComponent,
+  ColorInformerComponent,
+  InitialFormComponent,
 ];
 
 const MATERIAL_COMPONENT_MODULES = [

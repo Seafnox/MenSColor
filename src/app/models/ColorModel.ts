@@ -1,11 +1,13 @@
 export interface ColorHashData {
   hash: string;
+  [key: string]: any;
 }
 
 export interface ColorSeparatedData {
   red: number;
   green: number;
   blue: number;
+  [key: string]: any;
 }
 
 export type ColorModelData = ColorHashData | ColorSeparatedData;
