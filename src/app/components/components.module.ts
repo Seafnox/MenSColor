@@ -6,12 +6,18 @@ import { RgbHashFormComponent } from './rgb-hash-form/rgb-hash-form.component';
 import { RgbSeparatedFormComponent } from './rgb-separated-form/rgb-separated-form.component';
 import { ColorInformerComponent } from './color-informer/color-informer.component';
 import { InitialFormComponent } from './initial-form/initial-form.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { TeachListComponent } from './teach-list/teach-list.component';
+import { TeachListItemComponent } from './teach-list-item/teach-list-item.component';
 
 const DECLARATION_LIST = [
   RgbHashFormComponent,
   RgbSeparatedFormComponent,
   ColorInformerComponent,
   InitialFormComponent,
+  TeacherComponent,
+  TeachListComponent,
+  TeachListItemComponent,
 ];
 
 const MATERIAL_COMPONENT_MODULES = [

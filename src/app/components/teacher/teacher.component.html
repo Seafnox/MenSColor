@@ -1,0 +1,9 @@
+<app-teach-list [formArray]="teachForm"></app-teach-list>
+
+<button mat-raised-button *ngIf="!teaching" (click)="startTeach()">
+  <span>Teach it!</span>
+</button>
+
+<button mat-raised-button *ngIf="teaching">
+  <mat-progress-spinner mode="indeterminate" color="warn"></mat-progress-spinner>
+</button>

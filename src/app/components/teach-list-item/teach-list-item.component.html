@@ -1,0 +1,14 @@
+<div [formGroup]="form">
+  <app-rgb-separated-form [form]="form"></app-rgb-separated-form>
+
+  <app-color-informer [hash]="hash"></app-color-informer>
+
+  <mat-form-field>
+    <mat-select placeholder="for men is">
+      <mat-option *ngFor="let teachResult of teachResults" [value]="teachResult">
+        {{ teachResult }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

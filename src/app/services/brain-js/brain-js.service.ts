@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BrainJsService {
 
-  constructor() { }
+  public setLessons(lessons: any[]): void {
+
+  }
+
+  public forget(): void {
+
+  }
 
 }

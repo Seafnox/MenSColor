@@ -1,0 +1,31 @@
+:host {
+  background-color: var(--backgroud-back);
+}
+.content {
+  background-color: var(--backgroud-base);
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.recognize-wrapper {
+  display: flex;
+}
+
+.initial-form {
+  display: flex;
+  flex-grow: 2;
+  padding: 10px;
+}
+
+.recognize-image {
+  display: flex;
+  flex-grow: 2;
+}
+
+.recognize-result {
+  display: flex;
+  flex-grow: 2;
+  padding: 10px;
+}
+

@@ -1,4 +1,23 @@
-<h1>
-  Welcome to {{ title }}!
-</h1>
-<app-initial-form [form]="initialForm"></app-initial-form>
+<div class="content">
+  <h2>
+    Welcome to {{ title }}!
+  </h2>
+
+  <div class="teacher">
+    <app-teacher></app-teacher>
+  </div>
+
+  <div class="recognize-wrapper">
+    <div class="initial-form">
+      <app-initial-form [form]="initialForm"></app-initial-form>
+    </div>
+
+    <div class="recognize-image">
+      image
+    </div>
+
+    <div class="recognize-result">
+      result
+    </div>
+  </div>
+</div>
