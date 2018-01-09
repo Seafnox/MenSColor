@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { TeachListItemFormInterface } from '../teach-list-item/data/teachListItemForm.interface';
-import { TeachResult } from '../teach-list-item/data/teachResult.enum';
 import { TeachListFormInterface } from './data/TeachListForm.interface';
+import { generateTeachListItemForm } from './data/teachListItemForm.generator';
 
 @Component({
   selector: 'app-teach-list',
@@ -17,15 +16,10 @@ export class TeachListComponent {
       return;
     }
 
-    this.formArray.push(this.generateNewTeachListItemForm());
+    this.formArray.push(this.getNewTeachListItemForm());
   }
 
-  public generateNewTeachListItemForm(): TeachListItemFormInterface {
-    return new FormGroup({
-      red: new FormControl(0),
-      green: new FormControl(0),
-      blue: new FormControl(0),
-      result: new FormControl(TeachResult.black),
-    }) as TeachListItemFormInterface;
+  public getNewTeachListItemForm(): TeachListItemFormInterface {
+    return generateTeachListItemForm();
   }
 }

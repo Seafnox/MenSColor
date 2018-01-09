@@ -32,13 +32,14 @@ export class TeachListItemComponent implements OnChanges, OnDestroy {
   }
 
   public subscribe(): void {
-    this.formSubscription = this.form.valueChanges.subscribe(({red, green, blue}: TeachListItemFormValueInterface) => {
-      try {
-        this.hash = ColorModel.getHashFromRgb(red, green, blue);
-      } catch (err) {
-        console.error(err.toString());
-      }
-    });
+    this.formSubscription = this.form.valueChanges.startWith(this.form.value)
+      .subscribe(({red, green, blue}: TeachListItemFormValueInterface) => {
+        try {
+          this.hash = ColorModel.getHashFromRgb(red, green, blue);
+        } catch (err) {
+          console.error(err.toString());
+        }
+      });
   }
 
   public unsubscribe(): void {

@@ -41,7 +41,6 @@ export class RgbSeparatedFormComponent implements OnChanges, OnDestroy {
         return;
       }
 
-      console.log(`SET this.form.controls[${colorName}].valueChanges`);
       this[`${colorName}Subscription`] = this.form.controls[colorName].valueChanges
         .subscribe((value: number) => {
           if (typeof value !== 'number') {
