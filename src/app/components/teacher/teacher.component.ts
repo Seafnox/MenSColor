@@ -29,7 +29,8 @@ export class TeacherComponent implements OnInit {
 
   public startTeach(): void {
     const lessons: TeachListItemFormValueInterface[] = this.teachForm.value;
-
+    console.log('start teaching by lessons:');
+    lessons.forEach((lesson) => console.log(JSON.stringify(lesson)));
   }
 
 }
