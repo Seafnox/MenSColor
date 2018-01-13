@@ -7,7 +7,7 @@
 
   <mat-form-field [hideRequiredMarker]="true" floatLabel="always" class="inline-item">
     <mat-label>For men is</mat-label>
-    <mat-select placeholder="choose a color">
+    <mat-select [formControl]="form.controls.result" placeholder="choose a color">
       <mat-option *ngFor="let teachResult of teachResults" [value]="teachResult">
         {{ teachResult }}
       </mat-option>

@@ -3,7 +3,7 @@ export enum TeachResult {
   black = 'black',
   red = 'red',
   orange = 'orange',
-  yellow= 'yellow',
+  yellow = 'yellow',
   green = 'green',
   lightBlue = 'lightBlue',
   darkBlue = 'darkBlue',
