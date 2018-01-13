@@ -12,7 +12,6 @@ import { teachDataList } from './data/teachDataList.config';
   selector: 'app-teacher',
   templateUrl: './teacher.component.html',
   styleUrls: ['./teacher.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeacherComponent implements OnInit {
 
